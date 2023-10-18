@@ -18,6 +18,7 @@ pub struct ScanArgsParquet {
     pub cloud_options: Option<CloudOptions>,
     pub use_statistics: bool,
     pub hive_partitioning: bool,
+    pub known_schema: Option<SchemaRef>
 }
 
 impl Default for ScanArgsParquet {
@@ -32,6 +33,7 @@ impl Default for ScanArgsParquet {
             cloud_options: None,
             use_statistics: true,
             hive_partitioning: false,
+            known_schema: None
         }
     }
 }
@@ -45,12 +47,13 @@ struct LazyParquetReader {
 }
 
 impl LazyParquetReader {
-    fn new(path: PathBuf, args: ScanArgsParquet) -> Self {
+    fn new(path: PathBuf, mut args: ScanArgsParquet) -> Self {
+        let known_schema = args.known_schema.take();
         Self {
             args,
             path,
             paths: vec![],
-            known_schema: None,
+            known_schema,
         }
     }
 }
