@@ -105,7 +105,7 @@ version = "0.1.0"
 [workspace.dependencies.arrow]
 package = "polars-arrow"
 version = "0.37.0"
-path = "crates/polars-arrow"
+#path = "crates/polars-arrow"
 default-features = false
 features = [
   "compute_aggregate",
