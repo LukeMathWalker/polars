@@ -92,7 +92,7 @@ dtype-struct = ["polars-core/dtype-struct"]
 dtype-decimal = ["polars-core/dtype-decimal"]
 fmt = ["polars-core/fmt"]
 lazy = []
-parquet = ["polars-parquet", "polars-parquet/compression"]
+parquet = ["polars-parquet", "polars-parquet/gzip", "polars-parquet/snappy", "polars-parquet/brotli"]
 async = [
   "async-trait",
   "futures",
